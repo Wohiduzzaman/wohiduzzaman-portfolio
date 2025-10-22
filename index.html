@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -276,6 +276,18 @@
       border-top: 1px solid #374151;
     }
 
+    .lang-switch {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--secondary-color);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
     @media (max-width: 768px) {
       .hero { padding: 30px 15px; }
       .profile-pic { width: 120px; height: 120px; }
@@ -317,11 +329,17 @@
       <div class="info-box">
         <div class="info-item">
           <span class="icon">📍</span>
-          <div><div>LOCATION</div><div>Shyamnagar, Satkhira, Bangladesh</div></div>
+          <div>
+            <div>LOCATION</div>
+            <div>Shyamnagar, Satkhira, Bangladesh</div>
+          </div>
         </div>
         <div class="info-item">
           <span class="icon">🌐</span>
-          <div><div>WORK SCOPE</div><div>International Teams & Companies</div></div>
+          <div>
+            <div>WORK SCOPE</div>
+            <div>International Teams & Companies</div>
+          </div>
         </div>
       </div>
     </div>
@@ -332,7 +350,7 @@
       <div class="card-header">My Expertise</div>
       <div class="expertise-grid">
         <div class="expertise-card">
-          <div class="expertise-icon"><>></div>
+          <div class="expertise-icon">🛠️ </div>
           <h3>App & Website Development</h3>
           <p>Building robust, scalable applications and websites with modern technologies.</p>
         </div>
@@ -355,7 +373,7 @@
       <div class="card-header">Languages I Love</div>
       <div class="language-tags">
         <div class="tag"><span>🐍</span> Python</div>
-        <div class="tag"><span>JS</span> JavaScript</div>
+        <div class="tag"><span>🌐</span> JavaScript</div>
         <div class="tag"><span>☕</span> Java</div>
       </div>
     </div>
@@ -367,7 +385,7 @@
       <div class="love-grid">
         <div class="love-item"><span class="love-icon">❤️</span><div><h3>Creating New Things</h3><p>Building innovative solutions online and offline.</p></div></div>
         <div class="love-item"><span class="love-icon">🛡️</span><div><h3>Cyber Security</h3><p>Problem-solving and securing digital environments.</p></div></div>
-        <div class="love-item"><span class="love-icon"><></span><div><h3>Programming Experiments</h3><p>Exploring new technologies and coding techniques.</p></div></div>
+        <div class="love-item"><span class="love-icon">🧪</span><div><h3>Programming Experiments</h3><p>Exploring new technologies and coding techniques.</p></div></div>
         <div class="love-item"><span class="love-icon">▶️</span><div><h3>YouTube Content</h3><p>Working professionally with large YouTube channels.</p></div></div>
         <div class="love-item"><span class="love-icon">🌐</span><div><h3>International Projects</h3><p>Collaborating with foreign companies on exciting projects.</p></div></div>
         <div class="love-item"><span class="love-icon">❤️</span><div><h3>Tech Solutions</h3><p>Creating easy solutions for people through technology.</p></div></div>
@@ -389,10 +407,10 @@
       <div class="card-header">Let's Connect</div>
       <p>Have a project in mind or just want to say hello? I'd love to hear from you.</p>
       <div class="connect-buttons">
-        <a href="mailto:your-email@example.com" class="social-btn"><span>✉️</span> Email</a>
-        <a href="https://facebook.com/yourpage" target="_blank" class="social-btn"><span>📘</span> Facebook</a>
-        <a href="https://wa.me/yournumber" target="_blank" class="social-btn"><span>💬</span> WhatsApp</a>
-        <a href="https://youtube.com/@yourchannel" target="_blank" class="social-btn"><span>▶️</span> YouTube</a>
+        <a href="mailto:wohiduzzaman@gmail.com" class="social-btn"><span>✉️</span> Email</a>
+        <a href="https://www.facebook.com/wohiduzzaman" target="_blank" class="social-btn"><span>📘</span> Facebook</a>
+        <a href="https://wa.link/pzb8rn" target="_blank" class="social-btn"><span>💬</span> WhatsApp</a>
+        <a href="https://youtube.com/@rong_dhonu" target="_blank" class="social-btn"><span>▶️</span> YouTube</a>
       </div>
     </div>
   </div>
@@ -402,6 +420,8 @@
     <p>Software Engineer | Full-Stack Developer | Cyber Security Consultant</p>
     <p>© 2025 All Rights Reserved.</p>
   </footer>
+
+  <div class="lang-switch" id="lang-switch">বাংলা</div>
 
   <script>
     // Typing Effect
@@ -424,13 +444,102 @@
     }
     type();
 
-    // Mobile Menu
+    // Mobile Menu Toggle
     const menuBtn = document.getElementById('menu-btn');
     const navMenu = document.getElementById('nav-menu');
     const closeMenu = document.getElementById('close-menu');
-    menuBtn.onclick = () => navMenu.classList.add('active');
-    closeMenu.onclick = () => navMenu.classList.remove('active');
-    document.querySelectorAll('.nav-menu a').forEach(a => a.onclick = () => navMenu.classList.remove('active'));
+
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Language Switching
+    const langSwitch = document.getElementById('lang-switch');
+    let isBengali = false;
+
+    langSwitch.addEventListener('click', (e) => {
+      e.preventDefault();
+      isBengali = !isBengali;
+      
+      if (isBengali) {
+        langSwitch.textContent = 'English';
+        document.querySelector('.header-title').textContent = 'অহিদুজ্জামান';
+        document.querySelector('h1').textContent = 'অহিদুজ্জামান';
+        document.querySelector('.typing-text').textContent = 'সফটওয়্যার ইঞ্জিনিয়ার';
+        document.querySelector('p').textContent = 'আমি বিশ্বব্যাপী ক্লায়েন্টদের জন্য উচ্চমানের ডিজিটাল সমাধান এবং নিরাপদ অনলাইন অবকাঠামো তৈরি করি।';
+        
+        document.querySelectorAll('.card-header')[0].textContent = 'আমার সম্পর্কে';
+        document.querySelectorAll('.card-header')[1].textContent = 'আমার দক্ষতা';
+        document.querySelectorAll('.card-header')[2].textContent = 'আমি যা পছন্দ করি';
+        document.querySelectorAll('.card-header')[3].textContent = 'আমার দর্শন';
+        document.querySelectorAll('.card-header')[4].textContent = 'যোগাযোগ করুন';
+
+        document.querySelectorAll('.info-item')[0].querySelectorAll('div')[1].innerHTML = '<div>অবস্থান</div><div>শ্যামনগর, সাতক্ষীরা, বাংলাদেশ</div>';
+        document.querySelectorAll('.info-item')[1].querySelectorAll('div')[1].innerHTML = '<div>কাজের পরিসর</div><div>আন্তর্জাতিক দল ও কোম্পানি</div>';
+
+        document.querySelectorAll('.expertise-card')[0].querySelector('h3').textContent = 'অ্যাপ ও ওয়েবসাইট ডেভেলপমেন্ট';
+        document.querySelectorAll('.expertise-card')[1].querySelector('h3').textContent = 'সাইবার সিকিউরিটি ও টেস্টিং';
+        document.querySelectorAll('.expertise-card')[2].querySelector('h3').textContent = 'সফটওয়্যার ইঞ্জিনিয়ারিং';
+        document.querySelectorAll('.expertise-card')[3].querySelector('h3').textContent = 'ইউটিউব ম্যানেজমেন্ট ও স্ট্র্যাটেজি';
+
+        document.querySelectorAll('.love-item')[0].querySelector('h3').textContent = 'নতুন জিনিস তৈরি করা';
+        document.querySelectorAll('.love-item')[1].querySelector('h3').textContent = 'সাইবার সিকিউরিটি';
+        document.querySelectorAll('.love-item')[2].querySelector('h3').textContent = 'প্রোগ্রামিং পরীক্ষা';
+        document.querySelectorAll('.love-item')[3].querySelector('h3').textContent = 'ইউটিউব কন্টেন্ট';
+        document.querySelectorAll('.love-item')[4].querySelector('h3').textContent = 'আন্তর্জাতিক প্রকল্প';
+        document.querySelectorAll('.love-item')[5].querySelector('h3').textContent = 'টেক সমাধান';
+
+        document.querySelector('.philosophy').textContent = '“আমি জানি যে আমি কিছুই জানি না। এবং এটিই আমার প্রকৃত জ্ঞান। যদি একজন ব্যক্তি নিজের অজ্ঞতা স্বীকার করতে পারে, তাহলে সে অন্যদের কাছ থেকে শেখার জন্য প্রস্তুত হয়ে যায়। জ্ঞানের প্রকৃত শক্তি গর্বে নয়, বরং বিনয়ে নিহিত।”';
+
+        document.querySelector('.card-header').nextElementSibling.textContent = 'আমি একজন সফটওয়্যার ইঞ্জিনিয়ার এবং সাইবার সিকিউরিটি কনসালটেন্ট, যিনি প্রযুক্তির রূপান্তরকারী শক্তির প্রতি আগ্রহ দ্বারা পরিচালিত হন। আমার বাসায় শ্যামনগর, সাতক্ষীরা থেকে, আমি আন্তর্জাতিক দলের সাথে সহযোগিতা করি শক্তিশালী অ্যাপ্লিকেশন, নিরাপদ ডিজিটাল পরিবেশ এবং জটিল চ্যালেঞ্জের জন্য সৃজনশীল সমাধান প্রকৌশল করতে। অবিরাম শেখা আমার অনুশীলনের মূল।';
+
+        document.querySelector('.connect-buttons').previousElementSibling.textContent = 'একটি প্রকল্প মনে আছে কি অথবা শুধু হাই বলতে চান? আমি আপনার কাছ থেকে শুনতে খুশি হব।';
+      } else {
+        langSwitch.textContent = 'বাংলা';
+        document.querySelector('.header-title').textContent = 'WOHIDUZZAMAN';
+        document.querySelector('h1').textContent = 'WOHIDUZZAMAN';
+        document.querySelector('.typing-text').textContent = 'Software Engineer';
+        document.querySelector('p').textContent = 'I build high-quality digital solutions and secure online infrastructures for clients around the world.';
+        
+        document.querySelectorAll('.card-header')[0].textContent = 'About Me';
+        document.querySelectorAll('.card-header')[1].textContent = 'My Expertise';
+        document.querySelectorAll('.card-header')[2].textContent = 'What I Love';
+        document.querySelectorAll('.card-header')[3].textContent = 'My Philosophy';
+        document.querySelectorAll('.card-header')[4].textContent = 'Let\'s Connect';
+
+        document.querySelectorAll('.info-item')[0].querySelectorAll('div')[1].innerHTML = '<div>LOCATION</div><div>Shyamnagar, Satkhira, Bangladesh</div>';
+        document.querySelectorAll('.info-item')[1].querySelectorAll('div')[1].innerHTML = '<div>WORK SCOPE</div><div>International Teams & Companies</div>';
+
+        document.querySelectorAll('.expertise-card')[0].querySelector('h3').textContent = 'App & Website Development';
+        document.querySelectorAll('.expertise-card')[1].querySelector('h3').textContent = 'Cyber Security & Testing';
+        document.querySelectorAll('.expertise-card')[2].querySelector('h3').textContent = 'Software Engineering';
+        document.querySelectorAll('.expertise-card')[3].querySelector('h3').textContent = 'YouTube Management & Strategy';
+
+        document.querySelectorAll('.love-item')[0].querySelector('h3').textContent = 'Creating New Things';
+        document.querySelectorAll('.love-item')[1].querySelector('h3').textContent = 'Cyber Security';
+        document.querySelectorAll('.love-item')[2].querySelector('h3').textContent = 'Programming Experiments';
+        document.querySelectorAll('.love-item')[3].querySelector('h3').textContent = 'YouTube Content';
+        document.querySelectorAll('.love-item')[4].querySelector('h3').textContent = 'International Projects';
+        document.querySelectorAll('.love-item')[5].querySelector('h3').textContent = 'Tech Solutions';
+
+        document.querySelector('.philosophy').textContent = '“I know that I know nothing. And that is my true wisdom. If a person can recognize their own ignorance, they become ready to learn from others. The real strength of knowledge lies not in pride, but in humility.”';
+
+        document.querySelector('.card-header').nextElementSibling.textContent = 'I am a Software Engineer and Cyber Security Consultant driven by a passion for technology\'s transformative power. From my home in Shyamnagar, Satkhira, I collaborate with international teams to build robust applications, secure digital environments, and engineer creative solutions to complex challenges. Continuous learning is the core of my practice.';
+
+        document.querySelector('.connect-buttons').previousElementSibling.textContent = 'Have a project in mind or just want to say hello? I\'d love to hear from you.';
+      }
+    });
   </script>
 </body>
 </html>
